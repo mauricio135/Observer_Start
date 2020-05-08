@@ -20,9 +20,9 @@ namespace Observer
             this.provider.Unsubscribe(this);
         }
 
-        public void Update()
+        public void Update(Temperature t)
         {
-            Console.WriteLine($"The temperature is {this.provider.Current.Degrees}°C at {this.provider.Current.Date:g}");
+            Console.WriteLine($"The temperature is {t.Degrees}°C at {t.Date:g}");
             if (first)
             {
                 last = this.provider.Current;
@@ -31,7 +31,7 @@ namespace Observer
             else
             {
                 Console.WriteLine($"   Change: {this.provider.Current.Degrees - last.Degrees}° in " +
-                    $"{this.provider.Current.Date.ToUniversalTime() - last.Date.ToUniversalTime():g}");
+                    $"{t.Date.ToUniversalTime() - last.Date.ToUniversalTime():g}");
             }
         }
 
