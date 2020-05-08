@@ -6,7 +6,7 @@ namespace Observer
     {
         private bool first;
         private Temperature last;
-        private TemperatureSensor provider;
+        private IObservable provider;
 
         public void StartReporting(TemperatureSensor provider)
         {
@@ -25,12 +25,12 @@ namespace Observer
             Console.WriteLine($"The temperature is {t.Degrees}°C at {t.Date:g}");
             if (first)
             {
-                last = this.provider.Current;
+                last = t;
                 first = false;
             }
             else
             {
-                Console.WriteLine($"   Change: {this.provider.Current.Degrees - last.Degrees}° in " +
+                Console.WriteLine($"   Change: {t.Degrees - last.Degrees}° in " +
                     $"{t.Date.ToUniversalTime() - last.Date.ToUniversalTime():g}");
             }
         }
