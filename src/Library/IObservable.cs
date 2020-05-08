@@ -3,7 +3,13 @@ namespace Observer
 {
     public interface IObservable
     {
-        List <IObserver> observers { get; }
+        private List <IObserver> observers 
+        { 
+            get
+            {
+                return this.observers;
+            }
+        }
 
         void Subscribe(IObserver observer)
         {

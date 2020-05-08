@@ -6,7 +6,7 @@ namespace Observer
 {
     public class TemperatureSensor: IObservable
     {
-        public List<IObserver> observers { get; } = new List<IObserver>();
+        private List<IObserver> observers { get; } = new List<IObserver>();
 
         public Temperature Current { get; private set; }
 
